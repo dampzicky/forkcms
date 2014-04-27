@@ -9,6 +9,7 @@ namespace Backend\Core\Engine;
  * file that was distributed with this source code.
  */
 
+use Common\TemplateModifiers as BaseTemplateModifiers;
 use Backend\Core\Engine\Model as BackendModel;
 
 /**
@@ -16,20 +17,8 @@ use Backend\Core\Engine\Model as BackendModel;
  *
  * @author Tijs Verkoyen <tijs@sumocoders.be>
  */
-class TemplateModifiers
+class TemplateModifiers extends BaseTemplateModifiers
 {
-    /**
-     * Dumps the data
-     *  syntax: {$var|dump}
-     *
-     * @param string $var The variable to dump.
-     * @return string
-     */
-    public static function dump($var)
-    {
-        \Spoon::dump($var, false);
-    }
-
     /**
      * Format a UNIX-timestamp as a date
      * syntax: {$var|formatdate}
@@ -177,32 +166,6 @@ class TemplateModifiers
         $module = ($module !== null) ? (string) $module : null;
 
         return BackendModel::createURLForAction($action, $module, Language::getWorkingLanguage()) . $suffix;
-    }
-
-    /**
-     * Get a random var between a min and max
-     * syntax: {$var|rand:min:max}
-     *
-     * @param string $var The string passed from the template.
-     * @param int    $min The minimum number.
-     * @param int    $max The maximum number.
-     * @return int
-     */
-    public static function random($var = null, $min, $max)
-    {
-        return rand((int) $min, (int) $max);
-    }
-
-    /**
-     * Convert a multiline string into a string without newlines so it can be handles by JS
-     * syntax: {$var|stripnewlines}
-     *
-     * @param string $var The variable that should be processed.
-     * @return string
-     */
-    public static function stripNewlines($var)
-    {
-        return str_replace(array("\n", "\r"), '', $var);
     }
 
     /**

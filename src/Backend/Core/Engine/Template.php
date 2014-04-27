@@ -9,8 +9,6 @@ namespace Backend\Core\Engine;
  * file that was distributed with this source code.
  */
 
-use Backend\Core\Engine\Model as BackendModel;
-
 /**
  * This is our extended version of \SpoonTemplate
  * This class will handle a lot of stuff for you, for example:
@@ -48,25 +46,19 @@ class Template extends \SpoonTemplate
         parent::__construct();
 
         // get URL instance
-        if (BackendModel::getContainer()->has('url')) {
-            $this->URL = BackendModel::getContainer()->get('url');
+        if (Model::getContainer()->has('url')) {
+            $this->URL = Model::getContainer()->get('url');
         }
 
         // store in reference so we can access it from everywhere
         if ($addToReference) {
-            BackendModel::getContainer()->set('template', $this);
+            Model::getContainer()->set('template', $this);
         }
 
         // set cache directory
         $this->setCacheDirectory(BACKEND_CACHE_PATH . '/CachedTemplates');
-
-        // set compile directory
         $this->setCompileDirectory(BACKEND_CACHE_PATH . '/CompiledTemplates');
-
-        // when debugging, the template should be recompiled every time
         $this->setForceCompile(SPOON_DEBUG);
-
-        // map custom modifiers
         $this->mapCustomModifiers();
 
         // parse authentication levels
@@ -155,7 +147,7 @@ class Template extends \SpoonTemplate
                 // assign special vars
                 $this->assign(
                     'authenticatedUserEditUrl',
-                    BackendModel::createURLForAction(
+                    Model::createURLForAction(
                         'Edit',
                         'Users',
                         null,
@@ -172,7 +164,7 @@ class Template extends \SpoonTemplate
     private function parseAuthentication()
     {
         // init var
-        $db = BackendModel::getContainer()->get('database');
+        $db = Model::getContainer()->get('database');
 
         // get allowed actions
         $allowedActions = (array) $db->getRecords(
@@ -251,7 +243,7 @@ class Template extends \SpoonTemplate
         // assign some variable constants (such as site-title)
         $this->assign(
             'SITE_TITLE',
-            BackendModel::getModuleSetting('Core', 'site_title_' . Language::getWorkingLanguage(), SITE_DEFAULT_TITLE)
+            Model::getModuleSetting('Core', 'site_title_' . Language::getWorkingLanguage(), SITE_DEFAULT_TITLE)
         );
     }
 
@@ -269,8 +261,8 @@ class Template extends \SpoonTemplate
     private function parseLabels()
     {
         // grab the current module
-        if (BackendModel::getContainer()->has('url')) {
-            $currentModule = BackendModel::getContainer()->get(
+        if (Model::getContainer()->has('url')) {
+            $currentModule = Model::getContainer()->get(
                 'url'
             )->getModule();
         } elseif (isset($_GET['module']) && $_GET['module'] != '') {

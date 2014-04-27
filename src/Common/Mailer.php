@@ -122,7 +122,7 @@ class Mailer
         if ($isRawHTML) {
             $email['html'] = $template;
         } else {
-            $email['html'] = $this->getTemplateContent($template, $variables);
+            $email['html'] = $this->getTemplateContent($template, $variables, $email['language']);
         }
         if ($plainText !== null) {
             $email['plain_text'] = $plainText;
