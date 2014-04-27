@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS `emails` (
  `id` int(11) NOT NULL auto_increment,
+ `language` varchar(5) NOT NULL,
  `to_email` varchar(255) NOT NULL,
  `to_name` varchar(255) default NULL,
  `from_email` varchar(255) NOT NULL,

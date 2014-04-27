@@ -477,7 +477,7 @@ class Form extends FrontendBaseWidget
                             null,
                             null,
                             $replyTo,
-                            null, null, null, null, null, null, true
+                            null, null, null, null, null, null, null, true
                         );
                     }
                 }

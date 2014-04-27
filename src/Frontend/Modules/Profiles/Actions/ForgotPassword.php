@@ -128,7 +128,7 @@ class ForgotPassword extends FrontendBaseBlock
                     $mailValues,
                     $txtEmail->getValue(),
                     '',
-                    null, null, null, null, null, null, null, null, null, true
+                    null, null, null, null, null, null, null, null, null, null, true
                 );
 
                 // redirect

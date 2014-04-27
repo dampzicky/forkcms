@@ -50,6 +50,7 @@ class Mailer
      * @param string $fromName     The from-name for the mail.
      * @param string $replyToEmail The reply to-address for the mail.
      * @param string $replyToName  The reply to-name for the mail.
+     * @param string $language     The email language
      * @param bool   $queue        Should the mail be queued?
      * @param int    $sendOn       When should the email be send, only used when $queue is true.
      * @param bool   $isRawHTML    If this is true $template will be handled as raw HTML, so no parsing of
@@ -69,6 +70,7 @@ class Mailer
         $fromName = null,
         $replyToEmail = null,
         $replyToName = null,
+        $language = null,
         $queue = false,
         $sendOn = null,
         $isRawHTML = false,
@@ -101,6 +103,15 @@ class Mailer
         }
         if (!\SpoonFilter::isEmail($email['reply_to_email'])) {
             throw new Exception('Invalid e-mail address for reply-to address.');
+        }
+
+        // set language
+        if ($language !== null) {
+            $email['language'] = $language;
+        } else if (APPLICATION === 'Frontend') {
+            $email['language'] = FRONTEND_LANGUAGE;
+        } else if(APPLICATION === 'Backend') {
+            $email['language'] = BL::getWorkingLanguage();
         }
 
         // build array

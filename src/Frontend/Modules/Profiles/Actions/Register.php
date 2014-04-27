@@ -174,7 +174,7 @@ class Register extends FrontendBaseBlock
                         $mailValues,
                         $values['email'],
                         '',
-                        null, null, null, null, null, null, null, null, null, true
+                        null, null, null, null, null, null, null, null, null, null, true
                     );
 
                     // redirect

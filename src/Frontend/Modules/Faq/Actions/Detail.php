@@ -272,7 +272,7 @@ class Detail extends FrontendBaseBlock
                             sprintf(FL::getMessage('FaqFeedbackSubject'), $this->record['question']),
                             FRONTEND_MODULES_PATH . '/Faq/Layout/Templates/Mails/feedback.tpl',
                             $variables,
-                            null, null, null, null, null, null, null, null, null, null, null, true
+                            null, null, null, null, null, null, null, null, null, null, null, null, true
                         );
                     }
                 }

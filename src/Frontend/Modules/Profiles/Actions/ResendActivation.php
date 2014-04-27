@@ -127,7 +127,7 @@ class ResendActivation extends FrontendBaseBlock
                     $mailValues,
                     $profile->getEmail(),
                     '',
-                    null, null, null, null, null, null, null, null, null, true
+                    null, null, null, null, null, null, null, null, null, null, true
                 );
 
                 // redirect

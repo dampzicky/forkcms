@@ -949,7 +949,7 @@ class Model implements FrontendTagsInterface
                 FL::msg('NotificationSubject'),
                 FRONTEND_CORE_PATH . '/Layout/Templates/Mails/Notification.tpl',
                 $variables,
-                null, null, null, null, null, null, null, null, null, null, null, true
+                null, null, null, null, null, null, null, null, null, null, null, null, true
             );
         } elseif ($notifyByMailOnCommentToModerate && $comment['status'] == 'moderation') {
             // only notify on new comments to moderate and if the comment is one to moderate
@@ -964,7 +964,7 @@ class Model implements FrontendTagsInterface
                 FL::msg('NotificationSubject'),
                 FRONTEND_CORE_PATH . '/Layout/Templates/Mails/Notification.tpl',
                 $variables,
-                null, null, null, null, null, null, null, null, null, null, null, true
+                null, null, null, null, null, null, null, null, null, null, null, null, true
             );
         }
     }
