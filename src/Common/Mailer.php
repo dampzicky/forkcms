@@ -12,6 +12,7 @@ namespace Common;
 use \TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 use Frontend\Core\Engine\Model;
 use Frontend\Core\Engine\Template;
+use Backend\Core\Engine\Language as BL;
 
 /**
  * This class will send mails
